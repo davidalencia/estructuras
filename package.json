@@ -1,0 +1,24 @@
+{
+  "name": "estructuras",
+  "version": "1.0.0",
+  "description": "A set of handy (and not so much) data structures",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidalencia/estructuraDeDatos-Javascript.git"
+  },
+  "keywords": [
+    "data",
+    "structures",
+    "list"
+  ],
+  "author": "davidalencia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidalencia/estructuraDeDatos-Javascript/issues"
+  },
+  "homepage": "https://github.com/davidalencia/estructuraDeDatos-Javascript#readme"
+}

@@ -1,3 +1,4 @@
+module.exports.List = require('./List.js');
 const List = require('./List.js');
 
 supermer = new List();
