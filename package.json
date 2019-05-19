@@ -1,6 +1,6 @@
 {
   "name": "estructuras",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of handy (and not so much) data structures",
   "main": "main.js",
   "scripts": {

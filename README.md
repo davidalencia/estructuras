@@ -18,3 +18,22 @@ All data structures includes:
 * contains(element)
 * isEmpty()
 * forEach(callback)
+
+## Usage
+```javascript
+const struct = require('estructuras');
+
+let l  = new struct.List();
+
+l.add("hola");
+l.add(2);
+l.add(3);
+l.add(4);
+
+l.remove(3);
+
+l.forEach((x)=>{
+  //Do something
+  console.log(x);
+})
+```
