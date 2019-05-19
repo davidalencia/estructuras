@@ -18,6 +18,9 @@ All data structures includes:
 * contains(element)
 * isEmpty()
 * forEach(callback)
+* size
+
+Most of the structures include more methods, see documentation.
 
 ## Usage
 ```javascript
