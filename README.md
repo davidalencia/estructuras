@@ -10,11 +10,11 @@ npm install --save estructuras
 
 ## Info
 Data structures included:
-*List*
+* List
 
 All data structures includes:
-*add(element)
-*remove(element)
-*contains(element)
-*isEmpty()
-*forEach(callback)
+* add(element)
+* remove(element)
+* contains(element)
+* isEmpty()
+* forEach(callback)
