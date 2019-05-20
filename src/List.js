@@ -1,6 +1,6 @@
 "use strict"
 
-class Nodo {
+class Node {
   constructor(element) {
     this.element = element;
     this.next = null;
@@ -21,7 +21,7 @@ class List {
    * @param {Object} element the element that will be added to the list.
    */
   add(element){
-    let n = new Nodo(element);
+    let n = new Node(element);
     this.#size += 1;
     if(this.isEmpty()){
       this.#head = n;
@@ -38,31 +38,65 @@ class List {
    * @param {Object} element the element that will be removed from the list.
    */
   remove(element){
-    if(this.isEmpty())
-      return;
-    if(this.#head.element==element){
-      this.#head = this.#head.next;
-      this.#size -= 1;
-      return;
-    }
-
-    let n = this.#head.next;
-    let anterior = this.#head.next;
-    while (n!=null) {
-      if(n.element==element){
-        anterior.next = n.next;
-        this.#size -= 1;
-        return;
-      }
-      anterior = n;
+    let n = this.#head;
+    let before = null;
+    while (n!=null && n.element!=element){
+      before = n;
       n = n.next;
     }
+
+    if(n==null)
+      return;
+
+    this.#size -=1;
+    if(this.#head==this.#tail){
+      this.#head = null;
+      this.#tail = null;
+    }
+    else if(this.#head==n)
+      this.#head = n.next;
+    else {
+      if(this.#tail==n)
+        this.#tail = before;
+      before.next = n.next;
+    }
+
+    // if(this.#head.element==element){
+    //   this.#head = this.#head.next;
+    //   this.#size -= 1;
+    //   return;
+    // }
+    // let n = this.#head.next;
+    // let anterior = this.#head;
+    // while (n!=null) {
+    //   if(n.element==element){
+    //     anterior.next = n.next;
+    //     this.#size -= 1;
+    //     return;
+    //   }
+    //   anterior = n;
+    //   n = n.next;
+    // }
   }
 
+  /**
+   * Let us know if the element is contained in the list.
+   * @param {Object} element the element that may or not be in the list.
+   * @return {boolean} true if the element is contained false otherwise.
+   */
+  contains(element){
+    let n = this.#head;
+    while (n!=null) {
+      if(n.element == element)
+        return true;
+      n = n.next;
+    }
+    return false;
+  }
 
   /**
    * Method to know if our list is empty
-   * @return {boolean} true if the list is empty, false otherwise
+   * @return {boolean} true if the list is empty, false otherwise.
    */
   isEmpty(){
     return this.#head==null;
@@ -70,7 +104,8 @@ class List {
 
   /**
    * forEach implementation for list.
-   * @param {function} f an anonimus function with the behaviour desire for each element.
+   * @param {function} f an anonimus function with the behaviour desire for each
+   *                   element.
    */
   forEach(f){
     let n = this.#head;
@@ -79,7 +114,6 @@ class List {
       n = n.next;
     }
   }
-
 
   /**
    * Method to know the size (the number of elements) of our list.
