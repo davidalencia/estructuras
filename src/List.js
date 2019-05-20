@@ -60,23 +60,6 @@ class List {
         this.#tail = before;
       before.next = n.next;
     }
-
-    // if(this.#head.element==element){
-    //   this.#head = this.#head.next;
-    //   this.#size -= 1;
-    //   return;
-    // }
-    // let n = this.#head.next;
-    // let anterior = this.#head;
-    // while (n!=null) {
-    //   if(n.element==element){
-    //     anterior.next = n.next;
-    //     this.#size -= 1;
-    //     return;
-    //   }
-    //   anterior = n;
-    //   n = n.next;
-    // }
   }
 
   /**
@@ -113,6 +96,40 @@ class List {
       f(n.element);
       n = n.next;
     }
+  }
+
+  /**
+   * Returns the i element of the list.
+   * @param {number} i the index of our element.
+   * @return {Object} the element in the i index.
+   */
+  get(i){
+    if(i<0)
+      return null;
+    let n = this.#head;
+    while (n!=null && i-- >0) {
+      n = n.next;
+    }
+    if(i!=-1)
+      return null;
+    return n;
+  }
+
+  /**
+   * Returns the index of the element searched.
+   * @param {Object} element the element to be searched.
+   * @return {number} the index of the element or -1 in case it doesn't exist.
+   */
+  getIndex(element){
+    let n = this.#head;
+    let i = 0;
+    while (n!=null) {
+      if(n.element==element)
+        return i;
+      i++;
+      n = n.next;
+    }
+    return -1;
   }
 
   /**
