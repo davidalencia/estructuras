@@ -87,10 +87,10 @@ class List {
 
   /**
    * forEach implementation for list.
-   * @param {function} f an anonimus function with the behaviour desire for each
-   *                   element.
+   * @param {function} [f = console.log] an anonimus function with the behaviour
+   *                                     desire for each element.
    */
-  forEach(f){
+  forEach(f= console.log){
     let n = this.#head;
     while (n!=null) {
       f(n.element);
