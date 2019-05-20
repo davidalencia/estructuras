@@ -133,6 +133,20 @@ class List {
   }
 
   /**
+   * Returns an array with all the elements.
+   * @return {Array} an array with all the elements in the same order.
+   */
+  array(){
+    let arr = [];
+    let n = this.#head;
+    while (n!=null) {
+      arr.push(n.element);
+      n = n.next;
+    }
+    return arr;
+  }
+
+  /**
    * Method to know the size (the number of elements) of our list.
    * @return {number} size, with size >= 0.
    */

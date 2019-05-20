@@ -153,9 +153,37 @@ describe('List', function() {
         l.add(i);
       for (var i = 0; i < 100; i++)
         assert.ok(l.get(i), i);
-      for (var i = 100; i < 1200; i++)
+      for (var i = 100; i < 200; i++)
         assert(l.get(i)==null);
 
+    });
+  });
+
+  describe(`#getIndex`, function(){
+    it(`no elements`, function(){
+      assert(l.getIndex(0)==-1);
+      assert(l.getIndex(1)==-1);
+    });
+    it(`a few 100 elements`, function(){
+      for (var i = 0; i < 100; i++)
+        l.add(i);
+      for (var i = 0; i < 100; i++)
+        assert(l.getIndex(i)==i);
+      for (var i = 100; i < 200; i++)
+        assert(l.getIndex(i)==-1);
+    });
+  });
+
+  describe(`#array`, function(){
+    it(`100 elements array`, function(){
+      let arr = []
+      for (var i = 0; i < 100; i++){
+        arr.push(i);
+        l.add(i);
+      }
+      let listArr = l.array();
+      for (var i = 0; i < 100; i++)
+        assert(arr[i]==listArr[i]);
     });
   });
 });

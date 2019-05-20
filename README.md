@@ -1,7 +1,7 @@
 # Estructuras
 
-Repositorio con varias estructuras de datos, escritas en Javascript para ser
-usadas con node 12 en adelante.
+Repository with a set of handy (and not so much) data structures to be used with
+node 12 and up.
 
 ## Install
 ```bash
@@ -18,6 +18,7 @@ All data structures includes:
 * contains(element)
 * isEmpty()
 * forEach(callback)
+* array
 * size
 
 Most of the structures include more methods, see documentation.
