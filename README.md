@@ -3,6 +3,9 @@
 Repository with a set of handy (and not so much) data structures to be used with
 node 12 and up.
 
+**[CHECK OUT OUR WIKI][1]**
+
+
 ## Install
 ```bash
 npm install --save estructuras
@@ -41,3 +44,5 @@ l.forEach((x)=>{
   console.log(x);
 })
 ```
+
+[1]: https://github.com/davidalencia/estructuras/wiki
