@@ -9,6 +9,24 @@ describe('List', function() {
     l = new List();
   });
 
+  describe(`#constructor`, function(){
+    it(`should be empty`, function(){
+      var alfa = 0;
+      l.forEach(e=>alfa++);
+      assert(0==alfa);
+    });
+    it(`should have 1, 2, 3`, function(){
+      var arr = [1,2,3]
+      l = new List(arr);
+      var alfa = 0;
+      l.forEach(e=>{
+        assert(arr[alfa]==e)
+        alfa++;
+      });
+      assert(alfa==arr.length)
+    });
+  });
+
   describe('#size', function() {
     it("should be 0", function() {
       assert(l.size == 0);
@@ -26,18 +44,34 @@ describe('List', function() {
     });
   });
 
-  describe(`#contains`, function(){
-    it(`is empty`, function(){
-      for (var i = 100; i >= 0; i--) {
-        assert(!l.contains(i));
+  describe(`#back`, function(){
+    it(`pushing elements`, function(){
+      for (var i = 0; i < 100; i++) {
+        l.push(i);
+        assert.equal(l.back, i);
       }
     });
-    it(`does contains`, function(){
-      for (var i = 100; i >= 0; i--) {
-        l.add(i);
+    it(`unshifting elements`, function(){
+      l.unshift(-1)
+      for (var i = 0; i < 100; i++) {
+        l.unshift(i);
+        assert.equal(l.back, -1);
       }
-      for (var i = 100; i >= 0; i--) {
-        assert(l.contains(i));
+    });
+  });
+
+  describe(`#front`, function(){
+    it(`pushing elements`, function(){
+      l.push(-1)
+      for (var i = 0; i < 100; i++) {
+        l.push(i);
+        assert.equal(l.front, -1);
+      }
+    });
+    it(`unshifting elements`, function(){
+      for (var i = 0; i < 100; i++) {
+        l.unshift(i);
+        assert.equal(l.front, i);
       }
     });
   });
@@ -60,16 +94,81 @@ describe('List', function() {
     });
   });
 
+  describe(`#push`, function(){
+    it(`just push`, function(){
+      for (var i = 100; i >= 0; i--) {
+        assert(!l.contains(i));
+        l.push(i);
+        assert(l.contains(i));
+      }
+    });
+    it(`push and remove`, function(){
+      for (var i = 0; i < 100; i++) {
+        l.push(i);
+        assert(l.contains(i));
+        l.remove(i);
+        assert(!l.contains(i));
+      }
+    });
+    it(`push and pop`, function(){
+      for (var i = 0; i < 100; i++) {
+        l.push(i);
+        assert(l.contains(i));
+        assert(!l.contains(l.pop()));
+      }
+    });
+    it(`it's always last`, function(){
+      for (var i = 0; i < 100; i++) {
+        l.push(i);
+        assert(l.contains(i));
+        assert.equal(i, l.get(i));
+      }
+    });
+
+  });
+
+  describe(`#unshift`, function(){
+    it(`just unshift`, function(){
+      for (var i = 100; i >= 0; i--) {
+        assert(!l.contains(i));
+        l.unshift(i);
+        assert(l.contains(i));
+      }
+    });
+    it(`unshift and remove`, function(){
+      for (var i = 0; i < 100; i++) {
+        l.unshift(i);
+        assert(l.contains(i));
+        l.remove(i);
+        assert(!l.contains(i));
+      }
+    });
+    it(`shift and unshift`, function(){
+      for (var i = 0; i < 100; i++) {
+        l.unshift(i);
+        assert(l.contains(i));
+        assert(!l.contains(l.shift()));
+      }
+    });
+    it(`it's always first`, function(){
+      for (var i = 0; i < 100; i++) {
+        l.unshift(i);
+        assert(l.contains(i));
+        assert.equal(i, l.get(0));
+      }
+    });
+  });
+
   describe(`#remove`, function(){
-    it(`just remove`, function(){
+    it(`remove head`, function(){
       for (var i = 0; i < 100; i++)
-        l.add(i);
+      l.add(i);
       assert(l.size == 100);
 
       for (var i = 0; i < 100; i++){
         assert(l.contains(i));
         l.remove(i);
-        assert(!l.contains(i));
+        assert(!l.contains(i), `No deberia contener el ${i}`);
         assert(l.size == (99-i));
       }
     });
@@ -81,10 +180,10 @@ describe('List', function() {
       l.remove(1);
       assert(l.size == 0);
       for (var i = 0; i < 100; i++)
-        l.add(i);
+      l.add(i);
       assert(l.size == 100);
       for (var i = 0; i < 200; i++)
-        l.remove(i);
+      l.remove(i);
       assert(l.size == 0);
     });
 
@@ -94,10 +193,34 @@ describe('List', function() {
         l.add(i);
         assert(l.contains(i));
         l.remove(i);
-        assert(!l.contains(i));
+        assert(!l.contains(i), `No deberia contener el ${i}`);
         l.add(i);
         assert(l.contains(i));
       }
+    });
+  });
+
+  describe(`#pop`, function(){
+    it(`popping 100 elements`, function(){
+      for(var alfa = 0; alfa<100; alfa++)
+        l.add(alfa);
+      for(var alfa = 100; alfa>0; alfa--)
+        assert.equal(alfa-1, l.pop());
+    });
+    it(`empty list`, function(){
+      assert.equal(l.pop(), null);
+    });
+  });
+
+  describe(`#shift`, function(){
+    it(`shifting 100 elements`, function(){
+      for(var alfa = 0; alfa<100; alfa++)
+        l.add(alfa);
+      for(var alfa = 0; alfa<100; alfa++)
+        assert.equal(alfa, l.shift());
+    });
+    it(`empty list`, function(){
+      assert.equal(l.shift(), null);
     });
   });
 
@@ -109,6 +232,22 @@ describe('List', function() {
       for (var i = 0; i < 100; i++){
         l.add(i);
         assert(!l.isEmpty());
+      }
+    });
+  });
+
+  describe(`#contains`, function(){
+    it(`is empty`, function(){
+      for (var i = 100; i >= 0; i--) {
+        assert(!l.contains(i));
+      }
+    });
+    it(`do contains`, function(){
+      for (var i = 100; i >= 0; i--) {
+        l.add(i);
+      }
+      for (var i = 100; i >= 0; i--) {
+        assert(l.contains(i));
       }
     });
   });
@@ -152,10 +291,37 @@ describe('List', function() {
       for (var i = 0; i < 100; i++)
         l.add(i);
       for (var i = 0; i < 100; i++)
-        assert.ok(l.get(i), i);
+        assert.equal(l.get(i), i);
       for (var i = 100; i < 200; i++)
         assert(l.get(i)==null);
 
+    });
+  });
+
+  describe(`#set`, function(){
+    it(`setting out of bounds`, function(){
+      l.set(1, "l");
+      assert.equal(l.size, 0);
+      assert(!l.contains("l"));
+    });
+    it(`setting at 0`, function(){
+      l.set(0, "l");
+      assert(!l.contains("l"));
+      l.push("i");
+      assert(l.contains("i"));
+      l.set(0, "l");
+      assert(l.contains("l"));
+    });
+    it(`setting at n`, function(){
+      for(var alfa = 0; alfa<100; alfa++)
+        l.push(alfa);
+      for(var alfa = 0; alfa<100; alfa++){
+        assert(!l.contains("l"));
+        var i = Math.floor(Math.random()*(100-alfa));
+        l.set(i, "l");
+        assert.equal(l.getIndex("l"), i);
+        l.remove("l");
+      }
     });
   });
 
@@ -181,7 +347,7 @@ describe('List', function() {
         arr.push(i);
         l.add(i);
       }
-      let listArr = l.array();
+      let listArr = l.toArray();
       for (var i = 0; i < 100; i++)
         assert(arr[i]==listArr[i]);
     });

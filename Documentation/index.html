@@ -39,9 +39,51 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
+                        href='#listsize'
+                        class='regular pre-open'>
+                        #size
+                      </a></li>
+                      
+                      <li><a
+                        href='#listback'
+                        class='regular pre-open'>
+                        #back
+                      </a></li>
+                      
+                      <li><a
+                        href='#listfront'
+                        class='regular pre-open'>
+                        #front
+                      </a></li>
+                      
+                      <li><a
                         href='#listadd'
                         class='regular pre-open'>
                         #add
+                      </a></li>
+                      
+                      <li><a
+                        href='#listpush'
+                        class='regular pre-open'>
+                        #push
+                      </a></li>
+                      
+                      <li><a
+                        href='#listunshift'
+                        class='regular pre-open'>
+                        #unshift
+                      </a></li>
+                      
+                      <li><a
+                        href='#listpop'
+                        class='regular pre-open'>
+                        #pop
+                      </a></li>
+                      
+                      <li><a
+                        href='#listshift'
+                        class='regular pre-open'>
+                        #shift
                       </a></li>
                       
                       <li><a
@@ -51,15 +93,15 @@
                       </a></li>
                       
                       <li><a
-                        href='#listcontains'
-                        class='regular pre-open'>
-                        #contains
-                      </a></li>
-                      
-                      <li><a
                         href='#listisempty'
                         class='regular pre-open'>
                         #isEmpty
+                      </a></li>
+                      
+                      <li><a
+                        href='#listcontains'
+                        class='regular pre-open'>
+                        #contains
                       </a></li>
                       
                       <li><a
@@ -75,21 +117,21 @@
                       </a></li>
                       
                       <li><a
+                        href='#listset'
+                        class='regular pre-open'>
+                        #set
+                      </a></li>
+                      
+                      <li><a
                         href='#listgetindex'
                         class='regular pre-open'>
                         #getIndex
                       </a></li>
                       
                       <li><a
-                        href='#listarray'
+                        href='#listtoarray'
                         class='regular pre-open'>
-                        #array
-                      </a></li>
-                      
-                      <li><a
-                        href='#listsize'
-                        class='regular pre-open'>
-                        #size
+                        #toArray
                       </a></li>
                       
                     </ul>
@@ -191,6 +233,171 @@
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
   
+    <div class='border-bottom' id='listsize'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>size</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Method to know the size (the number of elements) of our list.</p>
+
+    <div class='pre p1 fill-light mt0'>size</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
+        size, with size >= 0.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='listback'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>back</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Let us peek the last element of the list.</p>
+
+    <div class='pre p1 fill-light mt0'>back</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        the last element.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='listfront'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>front</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Let us peek the last element of the list.</p>
+
+    <div class='pre p1 fill-light mt0'>front</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        the last element.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='listadd'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -234,6 +441,240 @@
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='listpush'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>push(element)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Pushes an element to the end of the list.</p>
+
+    <div class='pre p1 fill-light mt0'>push(element: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>element</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    the element that will be added to the list.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='listunshift'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>unshift(element)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Unshifts an element. i.e. adds an element to the start of the list.</p>
+
+    <div class='pre p1 fill-light mt0'>unshift(element: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>element</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    the element that will be added to the list.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='listpop'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>pop()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Pops an element. i.e. returns the last element of the list and gets removed
+from the list.</p>
+
+    <div class='pre p1 fill-light mt0'>pop(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        the last element of the list.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='listshift'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>shift()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Shifts an element. i.e. returns the first element of the list and gets
+removed from the list.</p>
+
+    <div class='pre p1 fill-light mt0'>shift(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        the first element of the list.
+
+      
+    
   
 
   
@@ -313,6 +754,61 @@
       </div>
     </div>
   
+    <div class='border-bottom' id='listisempty'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isEmpty()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Method to know if our list is empty</p>
+
+    <div class='pre p1 fill-light mt0'>isEmpty(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        true if the list is empty, false otherwise.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='listcontains'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -361,61 +857,6 @@
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
         true if the element is contained false otherwise.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='listisempty'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>isEmpty()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Method to know if our list is empty</p>
-
-    <div class='pre p1 fill-light mt0'>isEmpty(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-        true if the list is empty, false otherwise.
 
       
     
@@ -547,10 +988,81 @@ desire for each element.
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-        the element in the i index.
+        the element in the i index or null if the i is equal or
+bigger than size or i is smaller than 0.
 
       
     
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='listset'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>set(i, element)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Changes the i element of the list.</p>
+
+    <div class='pre p1 fill-light mt0'>set(i: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, element: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>i</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    the index of our element.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>element</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    the new value.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
   
 
   
@@ -638,11 +1150,11 @@ desire for each element.
       </div>
     </div>
   
-    <div class='border-bottom' id='listarray'>
+    <div class='border-bottom' id='listtoarray'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>array()</span>
+            <span class='code strong strong truncate'>toArray()</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -652,7 +1164,7 @@ desire for each element.
 
   <p>Returns an array with all the elements.</p>
 
-    <div class='pre p1 fill-light mt0'>array(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+    <div class='pre p1 fill-light mt0'>toArray(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
   
   
 
@@ -672,61 +1184,6 @@ desire for each element.
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
         an array with all the elements in the same order.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='listsize'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>size</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Method to know the size (the number of elements) of our list.</p>
-
-    <div class='pre p1 fill-light mt0'>size</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
-        size, with size >= 0.
 
       
     
