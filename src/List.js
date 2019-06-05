@@ -21,17 +21,19 @@ class List {
 
   /**
    * Constructor. Let us build a list.
+   * O(1) if arr is empty O(n) otherwise.
    * @param {Array} [arr=[]] the list is instantiated with an empty list unless
    *                         an Array is passed as parameter.
    * @return {List}
    */
   constructor(arr=[]){
     for(var alfa = 0; alfa<arr.length; alfa++)
-      this.push(arr[alfa]);
+      this.add(arr[alfa]);
   }
 
   /**
    * Method to know the size (the number of elements) of our list.
+   * O(1)
    * @return {number} size, with size >= 0.
    */
   get size(){
@@ -40,6 +42,7 @@ class List {
 
   /**
    * Let us peek the last element of the list.
+   * O(1)
    * @return {Object} the last element.
    */
   get back(){
@@ -48,6 +51,7 @@ class List {
 
   /**
    * Let us peek the last element of the list.
+   * O(1)
    * @return {Object} the last element.
    */
   get front(){
@@ -56,6 +60,7 @@ class List {
 
   /**
    * Adds the element to the list.
+   * O(1)
    * @param {Object} element the element that will be added to the list.
    */
   add(element){
@@ -64,6 +69,7 @@ class List {
 
   /**
    * Pushes an element to the end of the list.
+   * O(1)
    * @param {Object} element the element that will be added to the list.
    */
   push(element){
@@ -80,6 +86,7 @@ class List {
 
   /**
    * Unshifts an element. i.e. adds an element to the start of the list.
+   * O(1)
    * @param {Object} element the element that will be added to the list.
    */
   unshift(element){
@@ -96,6 +103,7 @@ class List {
 
   /**
    * Removes the element from the list.
+   * O(1)
    * @param {Object} element the element that will be removed from the list.
    */
   remove(element){
@@ -113,6 +121,7 @@ class List {
   /**
    * Pops an element. i.e. returns the last element of the list and gets removed
    * from the list.
+   * O(1)
    * @return {Object} the last element of the list.
    */
   pop(){
@@ -122,6 +131,7 @@ class List {
   /**
    * Shifts an element. i.e. returns the first element of the list and gets
    * removed from the list.
+   * O(1)
    * @return {Object} the first element of the list.
    */
   shift(){
@@ -130,6 +140,7 @@ class List {
 
   /**
    * Method to know if our list is empty
+   * O(1)
    * @return {boolean} true if the list is empty, false otherwise.
    */
   isEmpty(){
@@ -138,6 +149,7 @@ class List {
 
   /**
    * Let us know if the element is contained in the list.
+   * O(n)
    * @param {Object} element the element that may or not be in the list.
    * @return {boolean} true if the element is contained false otherwise.
    */
@@ -153,6 +165,7 @@ class List {
 
   /**
    * forEach implementation for list.
+   * O(n)
    * @param {function} [f = console.log] an anonimus function with the behaviour
    *                                     desire for each element.
    */
@@ -166,6 +179,7 @@ class List {
 
   /**
    * Returns the i element of the list.
+   * O(n)
    * @param {number} i the index of our element.
    * @return {Object} the element in the i index or null if the i is equal or
    *                  bigger than size or i is smaller than 0.
@@ -184,6 +198,7 @@ class List {
 
   /**
    * Changes the i element of the list.
+   * O(n)
    * @param {number} i the index of our element. Only  if 0<i<this.size
    * @param {Object} element the new value.
    */
@@ -200,6 +215,7 @@ class List {
 
   /**
    * Returns the index of the element searched.
+   * O(n)
    * @param {Object} element the element to be searched.
    * @return {number} the index of the element or -1 in case it doesn't exist.
    */
@@ -217,6 +233,7 @@ class List {
 
   /**
    * Returns an array with all the elements.
+   * O(n)
    * @return {Array} an array with all the elements in the same order.
    */
   toArray(){

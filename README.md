@@ -11,10 +11,6 @@ node 12 and up.
 npm install --save estructuras
 ```
 
-## Info
-Data structures included:
-* List
-
 All data structures includes:
 * add(element)
 * remove(element)
