@@ -164,6 +164,64 @@ class List {
   }
 
   /**
+   * Returns the first element in the list that returns true in the condition
+   * passed through the anonimus function.
+   * @param  {function} condition an anonimus function with one argument that
+   *                              must return a boolean, true if the element is
+   *                              the desire element, false otherwise.
+   * @return {Object} the element found or null if no element returned true in
+   *                  the condition.
+   * @example var l = new List();
+   * var item = {
+   *   x:1,
+   *   y:3
+   * }
+   * l.add(item);
+   * console.log(l.findOne(e=>e.y==3));
+   */
+  findOne(condition){
+    let n = this.#head;
+    while (n!=null) {
+      if(condition(n.element))
+        return n.element;
+      n = n.next;
+    }
+    return null;
+  }
+
+  /**
+   * Returns all the elements in the list that returns true in the condition
+   * passed through the anonimus function.
+   * @param  {function} condition an anonimus function with one argument that
+   *                              must return a boolean, true if the element is
+   *                              the desire element, false otherwise.
+   * @return {Array} an array with all the elements found that returned true on
+   *                  the condition.
+   * @example var l = new List();
+   * var item = {
+   *   x:1,
+   *   y:3
+   * }
+   * l.add(item);
+   * var item2 = {
+   *   x:19,
+   *   y:3
+   * }
+   * l.add(item2);
+   * console.log(l.find(e=>e.y==3));
+   */
+  find(condition){
+    let n = this.#head;
+    let arr = []
+    while (n!=null) {
+      if(condition(n.element))
+        arr.push(n.element);
+      n = n.next;
+    }
+    return arr;
+  }
+
+  /**
    * forEach implementation for list.
    * O(n)
    * @param {function} [f = console.log] an anonimus function with the behaviour

@@ -252,6 +252,37 @@ describe('List', function() {
     });
   });
 
+  describe(`#findOne`, function(){
+    it(`simple test`, function(){
+      var item = {
+        x:1,
+        y:3
+      }
+      l.add(item);
+      assert.equal(l.findOne(e=>e.y==3), item);
+    });
+    it(`should return null`, function(){
+      assert.equal(l.findOne(e=>e.y==3), null);
+    });
+  });
+
+  describe(`#find`, function(){
+    it(`simple test`, function(){
+      var item = {
+        x:1,
+        y:3
+      }
+      l.add(item);
+      console.log(l.find(e=>e.y==3));
+      assert.equal(l.find(e=>e.y==3)[0], item);
+    });
+    it(`should return []`, function(){
+      var a = l.find(e=>e.y==3);
+      assert(Array.isArray(a));
+      assert.equal(a.length, [].length);
+    });
+  });
+
   describe(`#forEach`, function(){
     it(`lorem`, function(){
       let lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed"+
