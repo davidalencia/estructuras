@@ -147,7 +147,7 @@ class BinaryTree {
    * @param {String} [dfsType="in"] if the walk is dfs then you can choose a
    *                                type "pre", "in" or "post".
    */
-   forEach(f= console.log, walk="dfs", dfsType="in"){
+  forEach(f= console.log, walk="dfs", dfsType="in"){
      if(walk=="dfs")
       this.dfs(dfsType, f);
     else if(walk=="bfs")
@@ -164,7 +164,7 @@ class BinaryTree {
    * @param {function} [f=console.log] an anonimus function with the behaviour
    *                                   desire for each element.
    */
-   dfs(order="in", f=console.log){
+  dfs(order="in", f=console.log){
      if(order=="pre")
       dfsPreOrder(this.#root, f);
      else if(order=="in")
@@ -179,7 +179,7 @@ class BinaryTree {
     * @param {function} [f=console.log] an anonimus function with the behaviour
     *                                   desire for each element.
     */
-   bfs(f=console.log){
+  bfs(f=console.log){
     if(this.#root==null)
       return;
     var l = new List();
@@ -200,12 +200,12 @@ class BinaryTree {
      return this.#root==null;
    }
 
-   /**
-    * Returns an array with the elements in order (lower to
-    * higher).
-    * O(n)
-    * @return an array with the elements.
-    */
+  /**
+   * Returns an array with the elements in order (lower to
+   * higher).
+   * O(n)
+   * @return an array with the elements.
+   */
   toArray(){
     var arr = [];
     this.dfs('in', e=>{
@@ -214,12 +214,50 @@ class BinaryTree {
     return arr;
   }
 
-/*
-  * remove(element)
-  * contains(element)
-  * array
-  * size
-*/
+
+  rotateLeft(p){
+    if(this.#root ==null || p==null || p.right==null)
+      return;
+    var q = p.right;
+    //father
+    q.father=p.father;
+    if(p.father!=null)
+      if(p.father.left==p)
+        q.father.left=q;
+      else
+        q.father.right=q;
+    //p adopt
+  	p.right = q.left;
+  	if(p.right!=null)
+  	  p.right.father = p;
+  	//q adopt
+  	q.left = p;
+  	p.father = q;
+  	if(p==this.#root)
+  	  this.#root=q;
+  }
+
+  rotateRight(q){
+    if(this.#root ==null || q==null || q.left==null)
+      return;
+    var p = q.left;
+    //father
+    p.father=q.father;
+    if(q.father!=null)
+      if(q.father.left==q)
+        p.father.left=p;
+      else
+        p.father.right=p;
+    //q adopt
+    q.left = p.right;
+    if(q.left!=null)
+      q.left.father = q;
+    //p adopt
+    p.right = q;
+    q.father = p;
+    if(q==this.#root)
+      this.#root=p;
+  }
 
   [_find](e){
     var n = this.#root;

@@ -36,10 +36,6 @@ describe(`BinaryTree`, function(){
     });
   });
 
-  describe(`#add`, function(){
-
-  });
-
   describe(`#remove`, function(){
     it(`is Leaf`, function(){
       var leafs = [5, 15, 25, 35];

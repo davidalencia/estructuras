@@ -17,16 +17,15 @@ All data structures includes:
 * contains(element)
 * isEmpty()
 * forEach(callback)
-* array
+* toArray
 * size
-
 Most of the structures include more methods, see documentation.
 
 ## Usage
 ```javascript
-const struct = require('estructuras');
+const List = require('estructuras').List;
 
-let l  = new struct.List();
+let l  = new List();
 
 l.add("hola");
 l.add(2);
