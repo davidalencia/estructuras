@@ -15,9 +15,9 @@ const _delete = Symbol('delete');
  */
 class List {
 
-  #head = null;
-  #tail = null;
-  #size = 0;
+  head = null;
+  tail = null;
+  size = 0;
 
   /**
    * Constructor. Let us build a list.
@@ -37,7 +37,7 @@ class List {
    * @return {number} size, with size >= 0.
    */
   get size(){
-    return this.#size;
+    return this.size;
   }
 
   /**
@@ -46,7 +46,7 @@ class List {
    * @return {Object} the last element.
    */
   get back(){
-    return (this.#tail!=null)? this.#tail.element: null;
+    return (this.tail!=null)? this.tail.element: null;
   }
 
   /**
@@ -55,7 +55,7 @@ class List {
    * @return {Object} the last element.
    */
   get front(){
-    return (this.#head!=null)? this.#head.element: null;
+    return (this.head!=null)? this.head.element: null;
   }
 
   /**
@@ -74,14 +74,14 @@ class List {
    */
   push(element){
     var newNode = new Node(element);
-    if(this.#tail==null)
-      this.#head = newNode;
+    if(this.tail==null)
+      this.head = newNode;
     else{
-      newNode.previous = this.#tail;
-      this.#tail.next = newNode;
+      newNode.previous = this.tail;
+      this.tail.next = newNode;
     }
-    this.#tail = newNode;
-    this.#size++;
+    this.tail = newNode;
+    this.size++;
   }
 
   /**
@@ -91,14 +91,14 @@ class List {
    */
   unshift(element){
     var newNode = new Node(element);
-    if(this.#tail==null)
-      this.#tail = newNode;
+    if(this.tail==null)
+      this.tail = newNode;
     else{
-      newNode.next = this.#head;
-      this.#head.previous = newNode;
+      newNode.next = this.head;
+      this.head.previous = newNode;
     }
-    this.#head = newNode;
-    this.#size++;
+    this.head = newNode;
+    this.size++;
   }
 
   /**
@@ -108,11 +108,11 @@ class List {
    */
   remove(element){
     this[_delete]();
-    let n = this.#head;
+    let n = this.head;
     while (n!=null) {
       if(n.element == element){
         this[_delete](n);
-        this.#size--;
+        this.size--;
       }
       n = n.next;
     }
@@ -125,7 +125,7 @@ class List {
    * @return {Object} the last element of the list.
    */
   pop(){
-    return this[_delete](this.#tail);
+    return this[_delete](this.tail);
   }
 
   /**
@@ -135,7 +135,7 @@ class List {
    * @return {Object} the first element of the list.
    */
   shift(){
-    return this[_delete](this.#head);
+    return this[_delete](this.head);
   }
 
   /**
@@ -144,7 +144,7 @@ class List {
    * @return {boolean} true if the list is empty, false otherwise.
    */
   isEmpty(){
-    return this.#head==null;
+    return this.head==null;
   }
 
   /**
@@ -154,7 +154,7 @@ class List {
    * @return {boolean} true if the element is contained false otherwise.
    */
   contains(element){
-    let n = this.#head;
+    let n = this.head;
     while (n!=null) {
       if(n.element == element)
         return true;
@@ -166,6 +166,7 @@ class List {
   /**
    * Returns the first element in the list that returns true in the condition
    * passed through the anonimus function.
+   * O(n)
    * @param  {function} condition an anonimus function with one argument that
    *                              must return a boolean, true if the element is
    *                              the desire element, false otherwise.
@@ -180,7 +181,7 @@ class List {
    * console.log(l.findOne(e=>e.y==3));
    */
   findOne(condition){
-    let n = this.#head;
+    let n = this.head;
     while (n!=null) {
       if(condition(n.element))
         return n.element;
@@ -192,6 +193,7 @@ class List {
   /**
    * Returns all the elements in the list that returns true in the condition
    * passed through the anonimus function.
+   * O(n)
    * @param  {function} condition an anonimus function with one argument that
    *                              must return a boolean, true if the element is
    *                              the desire element, false otherwise.
@@ -211,7 +213,7 @@ class List {
    * console.log(l.find(e=>e.y==3));
    */
   find(condition){
-    let n = this.#head;
+    let n = this.head;
     let arr = []
     while (n!=null) {
       if(condition(n.element))
@@ -228,7 +230,7 @@ class List {
    *                                     desire for each element.
    */
   forEach(f= console.log){
-    let n = this.#head;
+    let n = this.head;
     while (n!=null) {
       f(n.element);
       n = n.next;
@@ -245,7 +247,7 @@ class List {
   get(i){
     if(i<0)
       return null;
-    let n = this.#head;
+    let n = this.head;
     while (n!=null && i-- >0) {
       n = n.next;
     }
@@ -263,7 +265,7 @@ class List {
   set(i, element){
     if(i<0 || i>this.size)
       return;
-    let n = this.#head;
+    let n = this.head;
     while (n!=null && i-- >0)
       n = n.next;
     if(i!=-1)
@@ -278,7 +280,7 @@ class List {
    * @return {number} the index of the element or -1 in case it doesn't exist.
    */
   getIndex(element){
-    let n = this.#head;
+    let n = this.head;
     let i = 0;
     while (n!=null) {
       if(n.element==element)
@@ -296,7 +298,7 @@ class List {
    */
   toArray(){
     let arr = [];
-    let n = this.#head;
+    let n = this.head;
     while (n!=null) {
       arr.push(n.element);
       n = n.next;
@@ -308,16 +310,16 @@ class List {
     if (n==null)
       return null;
     var exNodo = n.element;
-    if(this.#tail==n && this.#head==n){
-      this.#tail=null;
-      this.#head=null;
+    if(this.tail==n && this.head==n){
+      this.tail=null;
+      this.head=null;
     }
-    else if(n==this.#head){
-      this.#head=n.next;
+    else if(n==this.head){
+      this.head=n.next;
       n.next.previous=null;
     }
-    else if(n==this.#tail){
-      this.#tail=n.previous;
+    else if(n==this.tail){
+      this.tail=n.previous;
       n.previous.next=null;
     }
     else{
