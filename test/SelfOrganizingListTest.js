@@ -1,12 +1,11 @@
 var assert = require('assert');
-var List = require('../src/main.js').List;
-
+var List = require('../src/main.js').SelfOrganizingList;
 
 var l;
-describe('List', function() {
+describe(`#SelfOrganizingList`, function(){
 
   beforeEach(function() {
-    l = new List();
+     l = new List();
   });
 
   describe(`#constructor`, function(){
@@ -45,33 +44,20 @@ describe('List', function() {
   });
 
   describe(`#back`, function(){
-    it(`pushing elements`, function(){
+    it(`adding elements`, function(){
       for (var i = 0; i < 100; i++) {
-        l.push(i);
+        l.add(i);
         assert.equal(l.back, i);
-      }
-    });
-    it(`unshifting elements`, function(){
-      l.unshift(-1)
-      for (var i = 0; i < 100; i++) {
-        l.unshift(i);
-        assert.equal(l.back, -1);
       }
     });
   });
 
   describe(`#front`, function(){
-    it(`pushing elements`, function(){
-      l.push(-1)
+    it(`adding elements`, function(){
+      l.add(-1)
       for (var i = 0; i < 100; i++) {
-        l.push(i);
+        l.add(i);
         assert.equal(l.front, -1);
-      }
-    });
-    it(`unshifting elements`, function(){
-      for (var i = 0; i < 100; i++) {
-        l.unshift(i);
-        assert.equal(l.front, i);
       }
     });
   });
@@ -90,71 +76,6 @@ describe('List', function() {
         assert(l.contains(i));
         l.remove(i);
         assert(!l.contains(i));
-      }
-    });
-  });
-
-  describe(`#push`, function(){
-    it(`just push`, function(){
-      for (var i = 100; i >= 0; i--) {
-        assert(!l.contains(i));
-        l.push(i);
-        assert(l.contains(i));
-      }
-    });
-    it(`push and remove`, function(){
-      for (var i = 0; i < 100; i++) {
-        l.push(i);
-        assert(l.contains(i));
-        l.remove(i);
-        assert(!l.contains(i));
-      }
-    });
-    it(`push and pop`, function(){
-      for (var i = 0; i < 100; i++) {
-        l.push(i);
-        assert(l.contains(i));
-        assert(!l.contains(l.pop()));
-      }
-    });
-    it(`it's always last`, function(){
-      for (var i = 0; i < 100; i++) {
-        l.push(i);
-        assert(l.contains(i));
-        assert.equal(i, l.get(i));
-      }
-    });
-
-  });
-
-  describe(`#unshift`, function(){
-    it(`just unshift`, function(){
-      for (var i = 100; i >= 0; i--) {
-        assert(!l.contains(i));
-        l.unshift(i);
-        assert(l.contains(i));
-      }
-    });
-    it(`unshift and remove`, function(){
-      for (var i = 0; i < 100; i++) {
-        l.unshift(i);
-        assert(l.contains(i));
-        l.remove(i);
-        assert(!l.contains(i));
-      }
-    });
-    it(`shift and unshift`, function(){
-      for (var i = 0; i < 100; i++) {
-        l.unshift(i);
-        assert(l.contains(i));
-        assert(!l.contains(l.shift()));
-      }
-    });
-    it(`it's always first`, function(){
-      for (var i = 0; i < 100; i++) {
-        l.unshift(i);
-        assert(l.contains(i));
-        assert.equal(i, l.get(0));
       }
     });
   });
@@ -337,14 +258,14 @@ describe('List', function() {
     it(`setting at 0`, function(){
       l.set(0, "l");
       assert(!l.contains("l"));
-      l.push("i");
+      l.add("i");
       assert(l.contains("i"));
       l.set(0, "l");
       assert(l.contains("l"));
     });
     it(`setting at n`, function(){
       for(var alfa = 0; alfa<100; alfa++)
-        l.push(alfa);
+        l.add(alfa);
       for(var alfa = 0; alfa<100; alfa++){
         assert(!l.contains("l"));
         var i = Math.floor(Math.random()*(100-alfa));
@@ -380,6 +301,42 @@ describe('List', function() {
       let listArr = l.toArray();
       for (var i = 0; i < 100; i++)
         assert(arr[i]==listArr[i]);
+    });
+  });
+
+  describe(`#add`, function(){
+    it(`add and forEach`, function(){
+      for(var alfa=0; alfa<100;alfa++){
+        l.add(alfa)
+        var previous = -1;
+        l.forEach(x=>{
+          assert(previous<x);
+          previous = x;
+        });
+      }
+    });
+  });
+
+  describe(`#findOne`, function(){
+    it(`just once`, function(){
+      for(var alfa=0; alfa<100;alfa++)
+        l.add(alfa)
+      l.findOne(x=>x==40);
+      assert(l.front==40);
+    });
+    it(`pair numbers to the front`, function(){
+      for(var alfa=0; alfa<100;alfa++)
+        l.add(alfa)
+      for(var alfa=0; alfa<50;alfa++)
+        l.findOne(e=>e==alfa*2)
+      var beta = 0;
+      l.forEach(e=>{
+        if(beta<50)
+          assert(e%2==0);
+        else
+          assert(e%2==1);
+        beta++;
+      });
     });
   });
 });

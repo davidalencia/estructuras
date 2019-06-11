@@ -15,6 +15,8 @@ All data structures includes:
 * add(element)
 * remove(element)
 * contains(element)
+* find(condition)
+* findOne(condition)
 * isEmpty()
 * forEach(callback)
 * toArray
