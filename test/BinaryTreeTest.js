@@ -36,6 +36,67 @@ describe(`BinaryTree`, function(){
     });
   });
 
+  describe(`#size`, function(){
+    it(`should be 0`, function(){
+      t = new Tree();
+      assert.equal(t.size, 0);
+    });
+    it(`should be 7`, function(){
+      assert.equal(t.size, 7);
+    });
+    it(`should be n (adding and removing)`, function(){
+      t = new Tree();
+      for(var alfa=0; alfa<100;alfa++){
+        for(var beta=0; beta<alfa;beta++){
+          t.add(beta);
+          assert.equal(t.size, beta+1);
+        }
+        for(var beta=0; beta<alfa;beta++){
+          t.remove(beta);
+          assert.equal(t.size, alfa-beta-1);
+        }
+        assert.equal(t.size,  0);
+      }
+    });
+    it(`should be n constructor`, function(){
+      var arr = [];
+      for(var alfa=1; alfa<100;alfa++){
+        arr.push(alfa);
+        t = new Tree(arr);
+        assert.equal(t.size, alfa);
+      }
+
+    });
+  });
+
+  describe(`#add`, function(){
+    it(`size increase`, function(){
+      var ant = t.size;
+      for(var alfa=0; alfa<100;alfa++){
+        t.add(alfa);
+        assert.equal(t.size, ant+1);
+        ant = t.size;
+      }
+    });
+    it(`still is binary tree`, function(){
+      for(var alfa=0; alfa<100;alfa++){
+        t.add(alfa);
+        stillTree(t.root);
+      }
+    });
+    it(`did added the element`, function(){
+      t = new Tree();
+      for(var alfa=0; alfa<100;alfa++){
+        t.add(alfa);
+        var added = false;
+        t.forEach(e=>{
+          added = (e==alfa)? true: false;
+        })
+        assert(added);
+      }
+    });
+  });
+
   describe(`#remove`, function(){
     it(`is Leaf`, function(){
       var leafs = [5, 15, 25, 35];
@@ -86,6 +147,7 @@ describe(`BinaryTree`, function(){
           alfa++
         });
         assert.equal(t.size, alfa);
+        stillTree(t.root);
       }
     });
   });
@@ -102,12 +164,23 @@ describe(`BinaryTree`, function(){
     });
   });
 
-  describe(`#bfs`, function(){
-    it(`bfs`, function(){
-      var bfs = [20, 10, 30, 5, 15, 25, 35];
+  describe(`#forEach`, function(){
+    it(`no order given`, function(){
+      for (var i = 0; i < 100; i++)
+      t.add(Math.random());
+      let lastOne = -1;
+      t.forEach((e)=>{
+        assert(e>lastOne);
+        e=lastOne;
+      });
+    });
+    it(`all elements`, function(){
+      var nodos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      t = new Tree(nodos);
       var alfa = 0;
-      t.bfs(e=>{
-        assert.equal(e, bfs[alfa++]);
+      t.forEach(e=>{
+        assert.equal(e, nodos[e])
+        nodos[e]= -1;
       });
     });
   });
@@ -137,24 +210,37 @@ describe(`BinaryTree`, function(){
     });
   });
 
-  describe(`#forEach`, function(){
-    it(`no order given`, function(){
-      for (var i = 0; i < 100; i++)
-        t.add(Math.random());
-      let lastOne = -1;
-      t.forEach((e)=>{
-        assert(e>lastOne);
-        e=lastOne;
+  describe(`#bfs`, function(){
+    it(`bfs`, function(){
+      var bfs = [20, 10, 30, 5, 15, 25, 35];
+      var alfa = 0;
+      t.bfs(e=>{
+        assert.equal(e, bfs[alfa++]);
       });
     });
-    it(`all elements`, function(){
-      var nodos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-      t = new Tree(nodos);
-      var alfa = 0;
-      t.forEach(e=>{
-        assert.equal(e, nodos[e])
-        nodos[e]= -1;
-      });
+  });
+
+  describe(`#isEmpty`, function(){
+    it(`at start`, function(){
+      t = new Tree();
+      assert(t.isEmpty());
+    });
+    it(`has one element`, function(){
+      t = new Tree();
+      assert(t.isEmpty())
+      t.add(1);
+      assert(!t.isEmpty())
+    });
+    it(`adding and removing`, function(){
+      t= new Tree();
+      for(var alfa=0; alfa<100;alfa++){
+        for(var beta=0; beta<alfa;beta++)
+          t.add(beta);
+        for(var beta=0; beta<alfa;beta++)
+          t.remove(beta);
+        assert(t.isEmpty())
+        assert.equal(t.size,  0);
+      }
     });
   });
 
@@ -173,4 +259,83 @@ describe(`BinaryTree`, function(){
       assert.equal(arr.length, t.size);
     });
   });
+
+  describe(`#rotateLeft`, function(){
+    describe(`two elements`, function(){
+      it(`root and right`, function(){
+        t = new Tree();
+        t.add(0);
+        t.add(1);
+        var r = t.root;
+        assert.equal(r.element, 0);
+        t.rotateLeft(r);
+        r = t.root;
+        assert.equal(r.element, 1);
+        assert.equal(r.father, null)
+        assert(r.left != null);
+        assert.equal(r.left.element, 0);
+        assert.equal(r.left.father, r);
+        stillTree(r);
+      });
+      it(`root and left`, function(){
+        t = new Tree();
+        t.add(1);
+        t.add(0);
+        var r = t.root;
+        assert.equal(r.element, 1);
+        t.rotateLeft(r);
+        r = t.root;
+        assert.equal(r.element, 1);
+        assert(r.left != null);
+        assert.equal(r.left.element, 0);
+      });
+    });
+  });
+
+  describe(`#rotateRight`, function(){
+    describe(`two elements`, function(){
+      it(`root and left`, function(){
+        t = new Tree();
+        t.add(1);
+        t.add(0);
+        var r = t.root;
+        assert.equal(r.element, 1);
+        t.rotateRight(r);
+        r = t.root;
+        assert.equal(r.element, 0);
+        assert.equal(r.father, null)
+        assert(r.right != null);
+        assert.equal(r.right.element, 1);
+        assert.equal(r.right.father, r);
+        stillTree(r);
+      });
+      it(`root and right`, function(){
+        t = new Tree();
+        t.add(0);
+        t.add(1);
+        var r = t.root;
+        assert.equal(r.element, 0);
+        t.rotateRight(r);
+        r = t.root;
+        assert.equal(r.element, 0);
+        assert(r.right != null);
+        assert.equal(r.right.element, 1);
+      });
+    });
+  });
 });
+
+function stillTree(n) {
+  if(n==null)
+    return;
+  if(n.left==null && n.right==null)
+    return;
+  if(n.left!=null){
+    assert(n.left.element<n.element);
+    stillTree(n.left);
+  }
+  if(n.right!=null){
+    assert(n.right.element>n.element);
+    stillTree(n.right);
+  }
+}

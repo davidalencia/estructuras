@@ -8,6 +8,7 @@ const _organize = Symbol('organize');
  * @name SelfOrganizingList
  * A self organizing list is a list that changes the order of the element, with
  * an heuristic to find the elements as quickly as possible.
+ * @extends List
  */
 class SelfOrganizingList extends List{
 

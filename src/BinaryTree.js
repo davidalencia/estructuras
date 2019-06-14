@@ -52,9 +52,9 @@ function moveAndAddNode(l, n){
  */
 class BinaryTree {
 
-  #root = null;
-  #size = 0;
-  #comp = (a,b)=>false;
+  root = null;
+  size = 0;
+  comp = (a,b)=>false;
 
   /**
    * Constructor of the binary tree.
@@ -64,7 +64,7 @@ class BinaryTree {
    *                                                         that will be used.
    */
   constructor(arr=[], comparator=(a,b)=>a==b? 0: a>b? 1: -1){
-    this.#comp = comparator
+    this.comp = comparator
     for(var alfa = 0; alfa<arr.length; alfa++)
       this.add(arr[alfa]);
   }
@@ -76,7 +76,7 @@ class BinaryTree {
    * @return {number} size, with size >= 0.
    */
   get size(){
-    return this.#size;
+    return this.size;
   }
 
   /**
@@ -86,14 +86,14 @@ class BinaryTree {
    */
   add(element){
     let n = new Node(element);
-    this.#size += 1;
-    if(this.#root==null){
-      this.#root = n;
+    this.size += 1;
+    if(this.root==null){
+      this.root = n;
       return;
     }
-    let next = this.#root;
+    let next = this.root;
     while(next != null){
-      if(this.#comp(element, next.element)>0) //goes right
+      if(this.comp(element, next.element)>0) //goes right
         if(next.right != null)
           next = next.right;
         else{
@@ -101,7 +101,7 @@ class BinaryTree {
           n.father = next;
           return;
         }
-      else
+      else //goes left
         if(next.left != null)
           next = next.left;
         else{
@@ -123,7 +123,7 @@ class BinaryTree {
     if(n==null)
       return;
     this[_deleteNode](this[_swap](n));
-    this.#size--;
+    this.size--;
   }
 
   /**
@@ -166,11 +166,11 @@ class BinaryTree {
    */
   dfs(order="in", f=console.log){
      if(order=="pre")
-      dfsPreOrder(this.#root, f);
+      dfsPreOrder(this.root, f);
      else if(order=="in")
-      dfsInOrder(this.#root, f);
+      dfsInOrder(this.root, f);
      else if(order=="post")
-      dfsPostOrder(this.#root, f);
+      dfsPostOrder(this.root, f);
    }
 
    /**
@@ -180,10 +180,10 @@ class BinaryTree {
     *                                   desire for each element.
     */
   bfs(f=console.log){
-    if(this.#root==null)
+    if(this.root==null)
       return;
     var l = new List();
-    l.push(this.#root);
+    l.push(this.root);
     while(!l.isEmpty()){
       var n = l.shift();
       moveAndAddNode(l, n);
@@ -197,7 +197,7 @@ class BinaryTree {
     * @return {boolean} true if the tree is empty, false otherwise.
     */
    isEmpty(){
-     return this.#root==null;
+     return this.root==null;
    }
 
   /**
@@ -216,7 +216,7 @@ class BinaryTree {
 
 
   rotateLeft(p){
-    if(this.#root ==null || p==null || p.right==null)
+    if(this.root ==null || p==null || p.right==null)
       return;
     var q = p.right;
     //father
@@ -233,12 +233,12 @@ class BinaryTree {
   	//q adopt
   	q.left = p;
   	p.father = q;
-  	if(p==this.#root)
-  	  this.#root=q;
+  	if(p==this.root)
+  	  this.root=q;
   }
 
   rotateRight(q){
-    if(this.#root ==null || q==null || q.left==null)
+    if(this.root ==null || q==null || q.left==null)
       return;
     var p = q.left;
     //father
@@ -255,14 +255,14 @@ class BinaryTree {
     //p adopt
     p.right = q;
     q.father = p;
-    if(q==this.#root)
-      this.#root=p;
+    if(q==this.root)
+      this.root=p;
   }
 
   [_find](e){
-    var n = this.#root;
-    while(n!=null && this.#comp(e, n.element)!=0){
-      if(this.#comp(e, n.element)>0)
+    var n = this.root;
+    while(n!=null && this.comp(e, n.element)!=0){
+      if(this.comp(e, n.element)>0)
         n = n.right;
       else
        n = n.left;
@@ -281,8 +281,8 @@ class BinaryTree {
   }
 
   [_deleteNode](n) {
-    if(this.#root==n){ //is root
-      this.#root=n.right;
+    if(this.root==n){ //is root
+      this.root=n.right;
       if(n.right!=null)
         n.father=null;
       return;
