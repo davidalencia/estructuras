@@ -261,6 +261,28 @@ describe(`BinaryTree`, function(){
   });
 
   describe(`#rotateLeft`, function(){
+    describe(`one element`, function(){
+      it(`is alone`, function(){
+        t = new Tree();
+        t.add(0);
+        r = t.root
+        t.rotateLeft();
+        assert(t.root, r);
+        assert.equal(r.father, null);
+        assert.equal(r.right, null);
+        assert.equal(r.left, null);
+      });
+      it(`is the wrong son`, function(){
+        t = new Tree();
+        t.add(0);
+        t.add(-1);
+        var r = t.root;
+        t.rotateLeft(r);
+        assert.equal(r.father, null);
+        assert.equal(r.right, null);
+        stillTree(r)
+      });
+    });
     describe(`two elements`, function(){
       it(`root and right`, function(){
         t = new Tree();
@@ -289,10 +311,68 @@ describe(`BinaryTree`, function(){
         assert(r.left != null);
         assert.equal(r.left.element, 0);
       });
+      it(`n`, function(){
+        t = new Tree();
+        t.add(0);
+        var r = t.root;
+        for(var alfa=1; alfa<100;alfa++){
+          stillTree(r);
+          t.add(alfa);
+          t.rotateLeft(r);
+          r = r.father;
+          assert.equal(r, t.root);
+        }
+      });
+    });
+    describe(`three elements`, function(){
+      it(`n is root and has two sons`, function(){
+        t = new Tree();
+        t.add(0);
+        t.add(1);
+        t.add(-1);
+        var r = t.root;
+        t.rotateLeft(r);
+        assert.equal(r.right, null);
+        r = r.father;
+        stillTree(r);
+        assert.equal(r.right, null);
+      });
+      it(`n has right, and right has left`, function(){
+        t =  new Tree();
+        t.add(0);
+        t.add(10);
+        t.add(5);
+        var r = t.root;
+        t.rotateLeft(r);
+        assert.equal(r.father, t.root);
+        stillTree(t.root);
+      });
     });
   });
 
   describe(`#rotateRight`, function(){
+    describe(`one element`, function(){
+      it(`is alone`, function(){
+        t = new Tree();
+        t.add(0);
+        r = t.root
+        t.rotateRight();
+        assert(t.root, r);
+        assert.equal(r.father, null);
+        assert.equal(r.right, null);
+        assert.equal(r.left, null);
+      });
+      it(`is the wrong son`, function(){
+        t = new Tree();
+        t.add(0);
+        t.add(1);
+        var r = t.root;
+        t.rotateRight(r);
+        assert.equal(r.father, null);
+        assert.equal(r.left, null);
+        stillTree(r)
+      });
+    });
     describe(`two elements`, function(){
       it(`root and left`, function(){
         t = new Tree();
@@ -320,6 +400,42 @@ describe(`BinaryTree`, function(){
         assert.equal(r.element, 0);
         assert(r.right != null);
         assert.equal(r.right.element, 1);
+      });
+      it(`n`, function(){
+        t = new Tree();
+        t.add(101);
+        var r = t.root;
+        for(var alfa=100; alfa>0;alfa--){
+          stillTree(r);
+          t.add(alfa);
+          t.rotateRight(r);
+          r = r.father;
+          assert.equal(r, t.root);
+        }
+      });
+    });
+    describe(`three elements`, function(){
+      it(`n is root and has two sons`, function(){
+        t = new Tree();
+        t.add(0);
+        t.add(1);
+        t.add(-1);
+        var r = t.root;
+        t.rotateRight(r);
+        assert.equal(r.left, null);
+        r = r.father;
+        stillTree(r);
+        assert.equal(r.left, null);
+      });
+      it(`n has left, and left has left`, function(){
+        t =  new Tree();
+        t.add(10);
+        t.add(0);
+        t.add(5);
+        var r = t.root;
+        t.rotateRight(r);
+        assert.equal(r.father, t.root);
+        stillTree(t.root);
       });
     });
   });
