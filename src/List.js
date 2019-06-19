@@ -107,7 +107,6 @@ class List {
    * @param {Object} element the element that will be removed from the list.
    */
   remove(element){
-    this[_delete]();
     let n = this.head;
     while (n!=null) {
       if(n.element == element){

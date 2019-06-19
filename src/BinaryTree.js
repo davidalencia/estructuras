@@ -55,9 +55,11 @@ class BinaryTree {
   root = null;
   size = 0;
   comp = (a,b)=>false;
+  lastAdded = null;
 
   /**
    * Constructor of the binary tree.
+   * O(1) if arr is empty O(n) otherwise.
    * @param {Array} [arr=[]] the tree is instantiated with an empty tree unless
    *                         an Array is passed as parameter.
    * @param {function} [comparator= (a,b)=>a==b? 0: a>b? 1: -1] the function
@@ -85,7 +87,10 @@ class BinaryTree {
    * @param {Object} element the element that will be added to the tree.
    */
   add(element){
+    if(element==null)
+      return;
     let n = new Node(element);
+    this.lastAdded = n;
     this.size += 1;
     if(this.root==null){
       this.root = n;
@@ -214,7 +219,13 @@ class BinaryTree {
     return arr;
   }
 
-
+  /**
+   * Rotates a tree given a node. Given a node called p and a right son called
+   * q, after the operation the node q will become the father of p.
+   * If p has no right son this method will result in nothing.
+   * O(1)
+   * @param  {Node} p the node that will be rotated
+   */
   rotateLeft(p){
     if(this.root ==null || p==null || p.right==null)
       return;
@@ -237,6 +248,13 @@ class BinaryTree {
   	  this.root=q;
   }
 
+  /**
+   * Rotates a tree given a node. Given a node called q and a left son called
+   * p, after the operation the node p will become the father of q.
+   * If q has no left son this method will result in nothing.
+   * O(1)
+   * @param  {Node} q the node that will be rotated
+   */
   rotateRight(q){
     if(this.root ==null || q==null || q.left==null)
       return;
