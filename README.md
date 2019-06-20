@@ -1,7 +1,7 @@
 # Estructuras
 
 Repository with a set of handy (and not so much) data structures to be used with
-node 12 and up.
+node js.
 
 **[CHECK OUT OUR WIKI][1]**
 
