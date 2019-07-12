@@ -11,18 +11,6 @@ node js.
 npm install --save estructuras
 ```
 
-All data structures includes:
-* add(element)
-* remove(element)
-* contains(element)
-* find(condition)
-* findOne(condition)
-* isEmpty()
-* forEach(callback)
-* toArray
-* size
-Most of the structures include more methods, see documentation.
-
 ## Usage
 Check out this example.
 

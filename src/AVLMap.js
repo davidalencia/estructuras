@@ -110,11 +110,11 @@ class AVLMap extends AVLTree {
    * @return {BinaryTree]} the copy of the tree.
    */
   clone(){
-    var t = new TreeMap(this.comp);
+    var t = new AVLMap(this.comp);
     this.forEach(e=>t.add(e.key, e.value));
     return t;
   }
 
 }
 
-module.exports = TreeMap;
+module.exports = AVLMap;
