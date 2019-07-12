@@ -3,7 +3,7 @@
 Repository with a set of handy (and not so much) data structures to be used with
 node js.
 
-**[CHECK OUT OUR WIKI][1]**
+**[CHECK THE DOCUMENTATION][1]**
 
 
 ## Install
@@ -24,6 +24,8 @@ All data structures includes:
 Most of the structures include more methods, see documentation.
 
 ## Usage
+Check out this example.
+**[Or check out the documentation.][1]** We do have documentation.
 ```javascript
 const List = require('estructuras').List;
 

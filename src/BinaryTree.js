@@ -1,10 +1,6 @@
 "use strict"
 const List = require('./List.js');
 
-const _find = Symbol('find');
-const _swap = Symbol('swap');
-const _deleteNode = Symbol('deleteNode');
-
 class Node {
   constructor(element) {
     this.father = null;
@@ -55,7 +51,7 @@ class BinaryTree {
   root = null;
   size = 0;
   comp = (a,b)=>false;
-  lastAdded = null;
+  _lastAdded = null;
 
   /**
    * Constructor of the binary tree.
@@ -118,16 +114,25 @@ class BinaryTree {
   }
 
   /**
+   * Adds all the elements of an array.
+   * @param {Array} arr an array where all the elements will be added.
+   */
+  addArray(arr){
+    for(var alfa=0; alfa<arr.length;alfa++)
+      this.add(arr[alfa]);
+  }
+
+  /**
    * Let us remove the first element in the tree that it's equal to the one in
    * the parameter.
    * O(n)
    * @param {Object} element the element that will be removed.
    */
   remove(element){
-    var n = this[_find](element);
+    var n = this._find(element);
     if(n==null)
       return;
-    this[_deleteNode](this[_swap](n));
+    this._deleteNode(this._swap(n));
     this.size--;
   }
 
@@ -137,7 +142,7 @@ class BinaryTree {
    * @param {Object} element the element that will be searched.
    */
   contains(element){
-    return (this[_find](element)!=null)? true: false;
+    return (this._find(element)!=null)? true: false;
   }
 
   /**
@@ -220,6 +225,25 @@ class BinaryTree {
   }
 
   /**
+   * Removes all elements from the tree.
+   * O(1)
+   */
+  clear(){
+    this.root = null;
+    this.size = 0;
+    this.lastAdded = null;
+  }
+
+  /**
+   * Returns a copy which is a different instance from the original tree.
+   * O(n^2)
+   * @return {BinaryTree]} the copy of the tree.
+   */
+  clone(){
+    return new BinaryTree(this.toArray(), this.comp);
+  }
+
+  /**
    * Rotates a tree given a node. Given a node called p and a right son called
    * q, after the operation the node q will become the father of p.
    * If p has no right son this method will result in nothing.
@@ -277,7 +301,7 @@ class BinaryTree {
       this.root=p;
   }
 
-  [_find](e){
+  _find(e){
     var n = this.root;
     while(n!=null && this.comp(e, n.element)!=0){
       if(this.comp(e, n.element)>0)
@@ -288,7 +312,7 @@ class BinaryTree {
     return n;
   }
 
-  [_swap](n) {
+  _swap(n) {
     if(n.left==null)
       return n;
     var change = n.left;
@@ -298,7 +322,7 @@ class BinaryTree {
     return change;
   }
 
-  [_deleteNode](n) {
+  _deleteNode(n) {
     if(this.root==n){ //is root
       this.root=n.right;
       if(n.right!=null)
@@ -318,7 +342,7 @@ class BinaryTree {
         hijo=n.right;
       hijo.father=n.father;
       if(n.father!=null)
-        if(n.father.right==vertice)
+        if(n.father.right==n)
           n.father.right=hijo;
         else
           n.father.left=hijo;

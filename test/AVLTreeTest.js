@@ -8,6 +8,13 @@ describe(`AVLTree`, function(){
     t = new Tree([20, 10, 5, 15, 30, 25, 35]);
   });
 
+  describe(`key-value`, function(){
+    t = new Tree([], (a, b)=> a.key==b.key? 0: a.key>b.key? 1: -1);
+    t.add({key:0, value:"valor0"});
+    t.add({key:1, value:"valor1"});
+    
+  });
+
   describe(`#constructor`, function(){
     it(`should be balance`, function(){
       assert.equal(t.size, 7);

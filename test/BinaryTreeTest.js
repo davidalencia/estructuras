@@ -1,3 +1,5 @@
+"use strict"
+
 var assert = require('assert');
 var Tree = require('../src/main.js').BinaryTree;
 
@@ -16,7 +18,7 @@ describe(`BinaryTree`, function(){
     it(`with comparator`, function(){
       t = new Tree([], (a,b)=>a<b);
       var nodos = [20, 10, 5, 15, 30, 25, 35];
-      for (n of nodos)
+      for (var n of nodos)
         t.add(n);
       var alfa = 0;
       var bfs = [20, 30, 10, 35, 25, 15, 5];
@@ -97,11 +99,25 @@ describe(`BinaryTree`, function(){
     });
   });
 
+  describe(`#addArray`, function(){
+    it(`simple array`, function(){
+      t.clear();
+      t.addArray([1,2,3,4,5,6,7,8,9]); // sums up to 45
+      var sum = 0;
+      var previous = 0;
+      t.forEach(e=>{
+        sum += e;
+        assert(previous<e);
+      });
+      assert(sum, 45);
+    });
+  });
+
   describe(`#remove`, function(){
     it(`is Leaf`, function(){
       var leafs = [5, 15, 25, 35];
       var size = t.size;
-      for (leaf of leafs) {
+      for (var leaf of leafs) {
         assert(t.contains(leaf));
         t.remove(leaf);
         assert(!t.contains(leaf));
@@ -112,7 +128,7 @@ describe(`BinaryTree`, function(){
     it(`isn't leaf nethier root`, function(){
       var nodos = [10, 30];
       var size = t.size;
-      for (n of nodos) {
+      for (var n of nodos) {
         assert(t.contains(n));
         t.remove(n);
         assert(!t.contains(n));
@@ -136,7 +152,7 @@ describe(`BinaryTree`, function(){
     it(`remove a all elements`, function(){
       var nodos = [20, 10, 5, 15, 30, 25, 35];
       var size = t.size;
-      for (n of nodos) {
+      for (var n of nodos) {
         assert(t.contains(n));
         t.remove(n);
         assert(!t.contains(n));
@@ -155,7 +171,7 @@ describe(`BinaryTree`, function(){
   describe(`#contains`, function(){
     it(`checking it does contains with the constructor`, function(){
       var nodos = [20, 10, 5, 15, 30, 25, 35];
-      for(n of nodos)
+      for(var n of nodos)
         assert(t.contains(n));
     });
     it(`doesn't contains`, function(){
@@ -260,12 +276,20 @@ describe(`BinaryTree`, function(){
     });
   });
 
+  describe(`#clear`, function(){
+    it(`is cleared`, function(){
+      assert(!t.isEmpty());
+      t.clear();
+      assert(t.isEmpty());
+    });
+  });
+
   describe(`#rotateLeft`, function(){
     describe(`one element`, function(){
       it(`is alone`, function(){
         t = new Tree();
         t.add(0);
-        r = t.root
+        var r = t.root
         t.rotateLeft();
         assert(t.root, r);
         assert.equal(r.father, null);
@@ -355,7 +379,7 @@ describe(`BinaryTree`, function(){
       it(`is alone`, function(){
         t = new Tree();
         t.add(0);
-        r = t.root
+        var r = t.root
         t.rotateRight();
         assert(t.root, r);
         assert.equal(r.father, null);

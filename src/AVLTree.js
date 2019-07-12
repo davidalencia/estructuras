@@ -2,14 +2,6 @@
 
 const BinaryTree = require('./BinaryTree.js');
 
-const _balance = Symbol("balance");
-const _rebalance = Symbol("rebalance");
-const _rotateLeftAndUpdate = Symbol("rotateLeftAndUpdate");
-const _rotateRightAndUpdate = Symbol("rotateRightAndUpdate");
-const _find = Symbol('find');
-const _swap = Symbol('swap');
-const _deleteNode = Symbol('deleteNode');
-
 function balance(n) {
   if(n==null)
     return 0;
@@ -59,7 +51,7 @@ class AVLTree extends BinaryTree {
       return;
     super.add(element);
     this.lastAdded.height = 0;
-    this[_rebalance](this.lastAdded.father);
+    this._rebalance(this.lastAdded.father);
   }
 
   /**
@@ -71,12 +63,12 @@ class AVLTree extends BinaryTree {
   remove(element){
     if(this.root==null || element==null)
       return;
-    var n = this[_find](element);
+    var n = this._find(element);
     if(n==null)
       return;
-    this[_deleteNode](this[_swap](n));
+    this._deleteNode(this._swap(n));
     this.size--;
-    this[_rebalance](n.father);
+    this._rebalance(n.father);
   }
 
   /**
@@ -91,85 +83,36 @@ class AVLTree extends BinaryTree {
    */
   rotateRight(){}
 
-  [_rotateRightAndUpdate](n){
+  _rotateRightAndUpdate(n){
     super.rotateRight(n);
     updateHeight(n);
     updateHeight(n.father);
   }
 
-  [_rotateLeftAndUpdate](n){
+  _rotateLeftAndUpdate(n){
     super.rotateLeft(n);
     updateHeight(n);
     updateHeight(n.father);
   }
 
-  [_rebalance](n){
+  _rebalance(n){
     while(n != null){
       updateHeight(n);
       var b = balance(n);
       if(Math.abs(b)>=2) {
         if(b>=2) {
           if(balance(n.left)<0)
-            this[_rotateLeftAndUpdate](n.left);
-          this[_rotateRightAndUpdate](n);
+            this._rotateLeftAndUpdate(n.left);
+          this._rotateRightAndUpdate(n);
         }
         else{
           if(balance(n.right)>0)
-            this[_rotateRightAndUpdate](n.right);
-          this[_rotateLeftAndUpdate](n)
+            this._rotateRightAndUpdate (n.right);
+          this._rotateLeftAndUpdate(n)
         }
         n = n.father;
       }
      n = n.father;
-    }
-  }
-
-
-  [_find](e){
-    var n = this.root;
-    while(n!=null && this.comp(e, n.element)!=0){
-      if(this.comp(e, n.element)>0)
-        n = n.right;
-      else
-       n = n.left;
-    }
-    return n;
-  }
-
-  [_swap](n) {
-    if(n.left==null)
-      return n;
-    var change = n.left;
-    while(change.right!=null)
-      change=change.right;
-    n.element = change.element;
-    return change;
-  }
-
-  [_deleteNode](n) {
-    if(this.root==n){ //is root
-      this.root=n.right;
-      if(n.right!=null)
-        n.father=null;
-      return;
-    }
-    if(n.right==null && n.left==null) //is leaf
-      if(n.father.left==n)
-        n.father.left=null;
-      else
-        n.father.right=null;
-    else{
-      var hijo;
-      if(n.left!=null)
-        hijo=n.left;
-      else
-        hijo=n.right;
-      hijo.father=n.father;
-      if(n.father!=null)
-        if(n.father.right==vertice)
-          n.father.right=hijo;
-        else
-          n.father.left=hijo;
     }
   }
 }
