@@ -29,7 +29,7 @@ describe(`BinaryTreeMap`, function(){
     });
   });
 
-  describe(`addArray`, function(){
+  describe(`#addArray`, function(){
     it(`100 arrays`, function(){
       var t = new Tree();
       var arr = [];
@@ -42,6 +42,14 @@ describe(`BinaryTreeMap`, function(){
           assert.equal(t.get(arr[beta].key), arr[beta].value);
         }
       }
+    });
+  });
+
+  describe(`#remove`, function(){
+    it(`once`, function(){
+      assert(t.contains(0));
+      //t.remove(0);
+
     });
   });
 
