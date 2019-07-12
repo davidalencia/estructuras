@@ -2,9 +2,12 @@
 
 const BinaryTree = require('./BinaryTree.js');
 
-class BinaryTreeMap extends BinaryTree {
 
-
+/**
+ * @name TreeMap
+ * @extends BinaryTree
+ */
+class TreeMap extends BinaryTree {
   /**
    * Constructor of the AVL tree.
    * O(1)
@@ -109,4 +112,4 @@ class BinaryTreeMap extends BinaryTree {
 
 }
 
-module.exports = BinaryTreeMap;
+module.exports = TreeMap;

@@ -262,91 +262,71 @@
               
                 
                 <li><a
-                  href='#constructor'
-                  class="">
-                  constructor
-                  
+                  href='#treemap'
+                  class=" toggle-sibling">
+                  TreeMap
+                  <span class='icon'>▸</span>
                 </a>
                 
-                </li>
-              
-                
-                <li><a
-                  href='#add'
-                  class="">
-                  add
+                <div class='toggle-target display-none'>
                   
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#addarray'
-                  class="">
-                  addArray
                   
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#remove'
-                  class="">
-                  remove
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#treemapadd'
+                        class='regular pre-open'>
+                        #add
+                      </a></li>
+                      
+                      <li><a
+                        href='#treemapaddarray'
+                        class='regular pre-open'>
+                        #addArray
+                      </a></li>
+                      
+                      <li><a
+                        href='#treemapremove'
+                        class='regular pre-open'>
+                        #remove
+                      </a></li>
+                      
+                      <li><a
+                        href='#treemapget'
+                        class='regular pre-open'>
+                        #get
+                      </a></li>
+                      
+                      <li><a
+                        href='#treemapcontains'
+                        class='regular pre-open'>
+                        #contains
+                      </a></li>
+                      
+                      <li><a
+                        href='#treemapcontainskey'
+                        class='regular pre-open'>
+                        #containsKey
+                      </a></li>
+                      
+                      <li><a
+                        href='#treemapcontainsvalue'
+                        class='regular pre-open'>
+                        #containsValue
+                      </a></li>
+                      
+                      <li><a
+                        href='#treemapclone'
+                        class='regular pre-open'>
+                        #clone
+                      </a></li>
+                      
+                    </ul>
                   
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#get'
-                  class="">
-                  get
                   
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#contains'
-                  class="">
-                  contains
                   
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#containskey'
-                  class="">
-                  containsKey
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#containsvalue'
-                  class="">
-                  containsValue
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#clone'
-                  class="">
-                  clone
-                  
-                </a>
+                </div>
                 
                 </li>
               
@@ -2631,77 +2611,59 @@ O(1)</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='constructor'>
-      constructor
+    <h3 class='fl m0' id='treemap'>
+      TreeMap
     </h3>
     
     
   </div>
   
 
-  <p>Constructor of the AVL tree.
-O(1)</p>
-
-    <div class='pre p1 fill-light mt0'>constructor(comparator: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+  
+    <div class='pre p1 fill-light mt0'>TreeMap</div>
   
   
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
+    <p>
+      Extends
       
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>comparator</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>
-            = <code>(a,b)=&gt;a==b?0:a&gt;b?1:-1</code>)</code>
-	    the function
-that will be used.
+        <a href="#binarytree">BinaryTree</a>
+      
+    </p>
+  
 
-          </div>
-          
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='treemapadd'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>add(key, value)</span>
         </div>
-      
-    </div>
-  
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='add'>
-      add
-    </h3>
-    
-    
-  </div>
   
 
   <p>Adds an couple of key and value. There are no repeated keys, if two
@@ -2762,20 +2724,19 @@ O(n)</p>
   
 </section>
 
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
+      </div>
+    </div>
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='addarray'>
-      addArray
-    </h3>
-    
-    
-  </div>
+    <div class='border-bottom' id='treemapaddarray'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>addArray(arr)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>Adds all the elements of an array.
@@ -2825,20 +2786,19 @@ O(n^2)</p>
   
 </section>
 
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
+      </div>
+    </div>
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='remove'>
-      remove
-    </h3>
-    
-    
-  </div>
+    <div class='border-bottom' id='treemapremove'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>remove(key)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>Removes an element from the tree, given the key of the element.
@@ -2896,20 +2856,19 @@ O(n)</p>
   
 </section>
 
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
+      </div>
+    </div>
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='get'>
-      get
-    </h3>
-    
-    
-  </div>
+    <div class='border-bottom' id='treemapget'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>get(key)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>Returns the value find related to the key.</p>
@@ -2966,20 +2925,19 @@ O(n)</p>
   
 </section>
 
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
+      </div>
+    </div>
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='contains'>
-      contains
-    </h3>
-    
-    
-  </div>
+    <div class='border-bottom' id='treemapcontains'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>contains(key)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>It tells us if the tree contains a key.
@@ -3037,20 +2995,19 @@ O(n)</p>
   
 </section>
 
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
+      </div>
+    </div>
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='containskey'>
-      containsKey
-    </h3>
-    
-    
-  </div>
+    <div class='border-bottom' id='treemapcontainskey'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>containsKey(key)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>It tells us if the tree contains a key.
@@ -3108,20 +3065,19 @@ O(n)</p>
   
 </section>
 
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
+      </div>
+    </div>
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='containsvalue'>
-      containsValue
-    </h3>
-    
-    
-  </div>
+    <div class='border-bottom' id='treemapcontainsvalue'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>containsValue(value)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>It tells us if the tree contains a value.
@@ -3179,20 +3135,19 @@ O(n)</p>
   
 </section>
 
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
+      </div>
+    </div>
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='clone'>
-      clone
-    </h3>
-    
-    
-  </div>
+    <div class='border-bottom' id='treemapclone'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>clone()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>Returns a copy which is a different instance from the original tree.
@@ -3220,6 +3175,18 @@ O(n^2)</p>
   
 
   
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
 
   
 
