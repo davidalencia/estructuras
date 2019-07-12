@@ -44,4 +44,4 @@ l.forEach((x)=>{
 })
 ```
 
-[1]: https://github.com/davidalencia/estructuras/wiki
+[1]: https://davidalencia.github.io/estructuras/
