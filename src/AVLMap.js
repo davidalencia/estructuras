@@ -1,17 +1,17 @@
 "use strict"
 
-const BinaryTree = require('./BinaryTree.js');
+const AVLTree = require('./AVLTree.js');
 
 
 /**
- * @name TreeMap
- * A Tree base map.
- * @extends BinaryTree
+ * @name AVLMap
+ * A Tree base map, which is based in a AVL Tree to ensure height of the tree.
+ * @extends AVLTree
  */
-class TreeMap extends BinaryTree {
+class AVLMap extends AVLTree {
 
   /**
-   * Constructor of the TreeMap.
+   * Constructor of the AVLMap.
    * O(1)
    * @param {function} [comparator= (a,b)=>a==b? 0: a>b? 1: -1] the function
    *                                                         that will be used.
@@ -24,7 +24,7 @@ class TreeMap extends BinaryTree {
    * Adds an couple of key and value. There are no repeated keys, if two
    * elements have the same keys the value will be updated. Since this is a tree
    * the elements will be order using the keys.
-   * O(n)
+   * O(log n)
    * @param {Object} key the key to find and organize the tree.
    * @param {Object} value the value that will be added.
    */
@@ -35,7 +35,7 @@ class TreeMap extends BinaryTree {
 
   /**
    * Adds all the elements of an array.
-   * O(n^2)
+   * O(n*log n)
    * @param {Array} arr all the elements that will be added to the array.
    */
   addArray(arr){
@@ -45,7 +45,7 @@ class TreeMap extends BinaryTree {
 
   /**
    * Removes an element from the tree, given the key of the element.
-   * O(n)
+   * O(log n)
    * @param  {Object} key the identifier of the object.
    * @return {Object} an object with the key and value of the object.
    */
@@ -59,7 +59,7 @@ class TreeMap extends BinaryTree {
 
   /**
    * Returns the value find related to the key.
-   * O(n)
+   * O(log n)
    * @param  {Object} key the key that will be searched.
    * @return {Object}     the value asociated to the key.
    */
@@ -70,7 +70,7 @@ class TreeMap extends BinaryTree {
 
   /**
    * It tells us if the tree contains a key.
-   * O(n)
+   * O(log n)
    * @param  {Object} key the key we are looking for.
    * @return {boolean} true if the key is founud false otherwise.
    */
@@ -80,7 +80,7 @@ class TreeMap extends BinaryTree {
 
   /**
    * It tells us if the tree contains a key.
-   * O(n)
+   * O(log n)
    * @param  {Object} key the key we are looking for.
    * @return {boolean} true if the key is founud false otherwise.
    */
@@ -106,7 +106,7 @@ class TreeMap extends BinaryTree {
 
   /**
    * Returns a copy which is a different instance from the original tree.
-   * O(n^2)
+   * O(n)
    * @return {BinaryTree]} the copy of the tree.
    */
   clone(){
