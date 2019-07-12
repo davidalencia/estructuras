@@ -94,11 +94,13 @@ class TreeMap extends BinaryTree {
    * @return {boolean} true if the value is founud false otherwise.
    */
   containsValue(value){
+    var isThere = false;
     this.forEach(e=>{
-      if(e.value==value)
-        return true;
+      if(e.value==value){
+        isThere = true;
+      }
     });
-    return false;
+    return isThere;
   }
 
   /**
@@ -107,7 +109,7 @@ class TreeMap extends BinaryTree {
    * @return {BinaryTree]} the copy of the tree.
    */
   clone(){
-    var t = new BinaryTreeMap(this.comp);
+    var t = new TreeMap(this.comp);
     this.forEach(e=>t.add(e.key, e.value));
     return t;
   }

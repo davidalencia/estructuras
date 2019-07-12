@@ -4,16 +4,14 @@ var assert = require('assert');
 var Tree = require('../src/main.js').TreeMap;
 
 var t;
+var  lorem  = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".split(" ");
+
 describe(`BinaryTreeMap`, function(){
 
   beforeEach(function() {
     t = new Tree();
-    t.add(0, "hi");
-    t.add(1, "this");
-    t.add(2, "is");
-    t.add(3, "an");
-    t.add(4, "awesome");
-    t.add(5, "tree");
+    for(var alfa=0; alfa<lorem.length;alfa++)
+      t.add(alfa, lorem[alfa]);
   });
 
   describe(`#add`, function(){
@@ -48,28 +46,99 @@ describe(`BinaryTreeMap`, function(){
   describe(`#remove`, function(){
     it(`once`, function(){
       assert(t.contains(0));
-      //t.remove(0);
-
+      t.remove(0);
+      assert(!t.contains(0));
+    });
+    it(`removing two times the same element`, function(){
+      var size = t.size;
+      assert(t.contains(0));
+      t.remove(0);
+      assert(!t.contains(0));
+      t.remove(0);
+      assert(!t.contains(0));
+      assert.equal(t.size, size-1);
+    });
+    it(`removing all elements`, function(){
+      var size = t.size;
+      for(var alfa=0; alfa<69;alfa++){
+        assert(t.contains(alfa));
+        t.remove(alfa);
+        assert(!t.contains(alfa));
+        size--;
+        assert.equal(t.size, size);
+      }
     });
   });
 
-  describe(`test`, function(){
-    it(`uno`, function(){
-      // t = new Tree();
-      // t.add(10, "hola");
-      // t.add(11, "esto");
-      // t.add(12, "es");
-      // t.add(13, "una");
-      // console.log(t._find({key:13}).element.value);
-      // t.remove(13);
-      // t.addArray([{key:1, value:"uno"}, {key:2, value:"dos"}]);
-      // console.log(t.containsKey(3));
-      // var t2 = t.clone();
-      // t2.remove(1);
-      // console.log("--------------------------------------------");
-      // t2.forEach();
-      // console.log("--------------------------------------------");
-      // t.forEach();
+  describe(`#get`, function(){
+    it(`getting all elements`, function(){
+      for(var alfa=0; alfa<lorem.length;alfa++)
+        assert.equal(t.get(alfa), lorem[alfa]);
+    });
+  });
+
+  describe(`#contains`, function(){
+    it(`has key`, function(){
+      for(var alfa=0; alfa<lorem.length;alfa++)
+        assert(t.contains(alfa));
+    });
+    it(`doesn't has key`, function(){
+      assert(!t.contains(lorem.length));
+    });
+    it(`adding and removing`, function(){
+      assert(t.contains(0));
+      t.remove(0);
+      assert(!t.contains(0));
+      t.add(0, "added");
+      assert(t.contains(0));
+      t.remove(0);
+      assert(!t.contains(0));
+    });
+  });
+
+  describe(`containsKey`, function(){
+    it(`has key`, function(){
+      for(var alfa=0; alfa<lorem.length;alfa++)
+        assert(t.contains(alfa));
+    });
+    it(`doesn't has key`, function(){
+      assert(!t.contains(lorem.length));
+    });
+    it(`adding and removing`, function(){
+      assert(t.contains(0));
+      t.remove(0);
+      assert(!t.contains(0));
+      t.add(0, "added");
+      assert(t.contains(0));
+      t.remove(0);
+      assert(!t.contains(0));
+    });
+  });
+
+  describe(`#containsValue`, function(){
+    it(`checking lorem ipsum`, function(){
+      for(var alfa=0; alfa<lorem.length;alfa++)
+        assert(t.containsValue(lorem[alfa]));
+    });
+    it(`checking a value that is not there`, function(){
+      assert(!t.containsValue("cadena que no esta"));
+    });
+    it(`adding and removing`, function(){
+      assert(t.containsValue("Lorem"));
+      t.remove(0);
+      assert(!t.containsValue("Lorem"));
+      t.add(0, "Lorem");
+      assert(t.containsValue("Lorem"));
+      t.remove(0);
+      assert(!t.containsValue("Lorem"));
+    });
+  });
+
+  describe(`#clone`, function(){
+    it(`cloning and removing`, function(){
+      var t2 =t.clone();
+      t.remove(0);
+      assert(t2.contains(0));
     });
   });
 });
