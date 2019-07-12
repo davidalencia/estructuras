@@ -5,11 +5,13 @@ const BinaryTree = require('./BinaryTree.js');
 
 /**
  * @name TreeMap
+ * A Tree base map.
  * @extends BinaryTree
  */
 class TreeMap extends BinaryTree {
+
   /**
-   * Constructor of the AVL tree.
+   * Constructor of the TreeMap.
    * O(1)
    * @param {function} [comparator= (a,b)=>a==b? 0: a>b? 1: -1] the function
    *                                                         that will be used.
